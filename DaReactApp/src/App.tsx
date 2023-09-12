@@ -1,6 +1,7 @@
 import {Grid, GridItem, Show} from '@chakra-ui/react'
 import React from "react";
 import NavBar from "./Components/NavBar";
+import TagSummary from "./services/TagSummary";
 
 function App() {
   return <Grid templateAreas={{
@@ -16,7 +17,7 @@ function App() {
       </GridItem>
     </Show>
     <GridItem area='main' >
-      Main
+      <TagSummary/>
     </GridItem>
   </Grid>
 }
