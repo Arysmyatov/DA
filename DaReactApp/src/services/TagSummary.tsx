@@ -1,26 +1,12 @@
-import React,   { useState, useEffect } from 'react';
-import apiClient from "./api-client";
-
-interface Tag {
-    tagName: string;
-    count: number;
-    percentage: number;
-}
+import { Text } from "@chakra-ui/react";
+import useTags  from "../hooks/useTags";
 
 const TagSummary = () => {
-    const [tags, setTags] = useState<Tag[]>([]);
-    const [error, setError] = useState(null);
-
-    useEffect(() => {
-        apiClient.get<Tag[]>("/Statistic/GetTags")
-            .then(res => setTags(res.data))
-            .catch((err) => setError(err.message));
-    })
-
+    const {tags, error} = useTags();
+    
     return (
         <>
-            {error && <div>{error}</div>}
-            
+            {error && <Text>{error}</Text>}
         <ul>
             {tags.map(tag => (
                 <li key={tag.tagName}>
